@@ -1,4 +1,15 @@
-@import "../lib/common.js";
+var ga = require("../lib/google_analytics");
+var common = require("../lib/common");
+var preferences = require("../lib/preferences");
+var localizedString = require("../lib/localizedString");
+var message = require("../lib/message");
+var layer = require("../lib/layer");
+
+var getPreferences = preferences.getPreferences;
+var toast = message.toast;
+var assetName = common.assetName;
+var groupFromLayers = layer.groupFromLayers;
+var addSliceInToGroup = layer.addSliceInToGroup;
 
 var newBitmapAsset = function(context) {
     ga(context, "New", "new_bitmap_asset");
@@ -12,7 +23,6 @@ var newVectorAsset = function(context) {
 
 function newAsset(context, format) {
 
-    var doc = context.document;
     var selection = context.selection;
     var selectionCount = selection.count();
 

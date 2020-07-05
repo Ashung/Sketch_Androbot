@@ -1,4 +1,20 @@
-@import "../lib/common.js";
+var ga = require("../lib/google_analytics");
+var message = require("../lib/message");
+var localizedString = require("../lib/localizedString");
+var preferences = require("../lib/preferences");
+var io = require("../lib/io");
+var common = require("../lib/common");
+var layer = require("../lib/layer");
+
+var toast = message.toast;
+var chooseFolder = io.chooseFolder;
+var showInFinder = io.showInFinder;
+var mkdir = io.mkdir;
+var directoryIsWriteable = io.directoryIsWriteable;
+var getPreferences = preferences.getPreferences;
+var dpiToScale = common.dpiToScale;
+var assetName = common.assetName;
+var getLayerWithNameFromParent = layer.getLayerWithNameFromParent;
 
 var onRun = function(context) {
 

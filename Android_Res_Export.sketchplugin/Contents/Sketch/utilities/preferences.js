@@ -1,4 +1,15 @@
-@import "../lib/common.js";
+var ga = require("../lib/google_analytics");
+var preferences = require("../lib/preferences");
+var localizedString = require("../lib/localizedString");
+var common = require("../lib/common");
+var io = require("../lib/io");
+
+var getPreferences = preferences.getPreferences;
+var setPreferences = preferences.setPreferences;
+var removeSystemPreference = preferences.removeSystemPreference;
+var getSystemPreference = preferences.getSystemPreference;
+var setSystemPreference = preferences.setSystemPreference;
+var fileExists = io.fileExists;
 
 var onRun = function(context) {
 
@@ -92,7 +103,7 @@ var onRun = function(context) {
 
     // Vector drawable folder
     dialog.addAccessoryView(groupLabel(localizedString(context, "vector_drawable_folder")));
-    var vectordrawableFolder = popupButton(VECTORDRAWABLE_FOLDERS);
+    var vectordrawableFolder = popupButton(common.VECTORDRAWABLE_FOLDERS);
     var currentVectorFolder = getPreferences(context, "vector_drawable_folder");
     var currentVectorFolderIndex = currentVectorFolder ? currentVectorFolder : 0;
     vectordrawableFolder.selectItemAtIndex(currentVectorFolderIndex);
@@ -100,9 +111,9 @@ var onRun = function(context) {
 
     // Language
     dialog.addAccessoryView(groupLabel(localizedString(context, "change_language")));
-    var language = popupButton(Object.values(LANGUAGES));
+    var language = popupButton(Object.values(common.LANGUAGES));
     var currentLanguage = getPreferences(context, "language");
-    var currentLanguageIndex = currentLanguage ? Object.keys(LANGUAGES).indexOf(String(currentLanguage)) : 0;
+    var currentLanguageIndex = currentLanguage ? Object.keys(common.LANGUAGES).indexOf(String(currentLanguage)) : 0;
     language.selectItemAtIndex(currentLanguageIndex);
     dialog.addAccessoryView(language);
 
@@ -177,7 +188,7 @@ var onRun = function(context) {
         setPreferences(context, "vector_drawable_folder", vectordrawableFolder.indexOfSelectedItem());
 
         var languageIndex = String(language.indexOfSelectedItem());
-        var languageFileURL = context.plugin.urlForResourceNamed("manifest_" + Object.keys(LANGUAGES)[languageIndex] + ".json");
+        var languageFileURL = context.plugin.urlForResourceNamed("manifest_" + Object.keys(common.LANGUAGES)[languageIndex] + ".json");
         if (fileExists(languageFileURL.path())) {
             var manifestFilePath = context.plugin.url().path() + "/Contents/Sketch/manifest.json";
             var languageFilePath = languageFileURL.path();
@@ -190,13 +201,13 @@ var onRun = function(context) {
                 languageFilePath, manifestFilePath, nil
             );
             // User Default
-            setPreferences(context, "language", Object.keys(LANGUAGES)[languageIndex]);
+            setPreferences(context, "language", Object.keys(common.LANGUAGES)[languageIndex]);
             // Reload Plugin
             AppController.sharedInstance().pluginManager().reloadPlugins();
         } else {
             var app = NSApplication.sharedApplication();
             app.displayDialog_withTitle_(
-                localizedString(context, "language_file_not_found_desc", context.plugin.url().path() + "/Contents/Resources/manifest_" + Object.keys(LANGUAGES)[languageIndex] + ".json"),
+                localizedString(context, "language_file_not_found_desc", context.plugin.url().path() + "/Contents/Resources/manifest_" + Object.keys(common.LANGUAGES)[languageIndex] + ".json"),
                 localizedString(context, "language_file_not_found")
             );
         }

@@ -185,7 +185,7 @@ input[type=range]:focus {
     left: 50%;
     box-sizing: border-box;
 }
-#controlor {
+#controller {
     height: 56px;
     box-sizing: border-box;
     padding: 0 16px;
@@ -193,13 +193,13 @@ input[type=range]:focus {
     display: flex;
     border-top: 1px solid #ddd;
 }
-#controlor label {
+#controller label {
     margin-right: 8px;
 }
-#controlor input[type="range"] {
+#controller input[type="range"] {
     margin-right: 16px;
 }
-#controlor + #foot-actions {
+#controller + #foot-actions {
     border: 0;
 }
 

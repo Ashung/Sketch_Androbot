@@ -1,4 +1,17 @@
-@import "../lib/common.js";
+var ga = require("../lib/google_analytics");
+var message = require("../lib/message");
+var localizedString = require("../lib/localizedString");
+var preferences = require("../lib/preferences");
+var layer = require("../lib/layer");
+var io = require("../lib/io");
+
+var toast = message.toast;
+var getPreferences = preferences.getPreferences;
+var getLayerWithNameFromParent = layer.getLayerWithNameFromParent;
+var chooseFolder = io.chooseFolder;
+var showInFinder = io.showInFinder;
+var directoryIsWriteable = io.directoryIsWriteable;
+var writeContentToFile = io.writeContentToFile;
 
 var onRun = function(context) {
 

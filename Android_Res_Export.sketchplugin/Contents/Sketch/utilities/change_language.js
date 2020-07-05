@@ -1,4 +1,12 @@
-@import "../lib/common.js";
+var preferences = require("../lib/preferences");
+var localizedString = require("../lib/localizedString");
+var io = require("../lib/io");
+var message = require("../lib/message");
+
+var getPreferences = preferences.getPreferences;
+var fileExists = io.fileExists;
+var getJSONFromPath = io.getJSONFromPath;
+var toast = message.toast;
 
 var changeLanguage = function(context) {
 

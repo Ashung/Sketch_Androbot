@@ -1,4 +1,17 @@
-@import "../lib/common.js";
+var ga = require("../lib/google_analytics");
+var message = require("../lib/message");
+var localizedString = require("../lib/localizedString");
+var preferences = require("../lib/preferences");
+var io = require("../lib/io");
+var common = require("../lib/common");
+
+var toast = message.toast;
+var getPreferences = preferences.getPreferences;
+var chooseFolder = io.chooseFolder;
+var showInFinder = io.showInFinder;
+var directoryIsWriteable = io.directoryIsWriteable;
+var dpiToScale = common.dpiToScale;
+var assetName = common.assetName;
 
 var onRun = function(context) {
 

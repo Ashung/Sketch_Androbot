@@ -1,4 +1,8 @@
-@import "../lib/common.js";
+var ga = require("../lib/google_analytics");
+var message = require("../lib/message");
+var localizedString = require("../lib/localizedString");
+
+var toast = message.toast;
 
 var onRun = function(context) {
 

@@ -1,5 +1,20 @@
-@import "../lib/MochaJSDelegate.js";
-@import "../lib/common.js";
+var ga = require("../lib/google_analytics");
+var message = require("../lib/message");
+var localizedString = require("../lib/localizedString");
+var window = require("../lib/window");
+var common = require("../lib/common");
+var preferences = require("../lib/preferences");
+var io = require("../lib/io");
+
+var toast = message.toast;
+var showCodeWindow = window.showCodeWindow;
+var assetName = common.assetName;
+var getPreferences = preferences.getPreferences;
+var saveToFolder = io.saveToFolder;
+var directoryIsWriteable = io.directoryIsWriteable;
+var writeContentToFile = io.writeContentToFile;
+var openInFinder = io.openInFinder;
+var colorToAndroid = common.colorToAndroid;
 
 var onRun = function(context) {
 

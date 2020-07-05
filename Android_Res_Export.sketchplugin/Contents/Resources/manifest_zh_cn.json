@@ -6,7 +6,7 @@
     "homepage": "https://github.com/Ashung/Android_Res_Export",
     "appcast": "https://ashung.github.io/Android_Res_Export/appcast.xml",
     "icon": "plugin_icon.png",
-    "version": "3.8.7",
+    "version": "4.0.0",
     "identifier": "com.ashung.hung.android_res_export",
     "compatibleVersion": "4",
     "bundleVersion": "1",
@@ -15,86 +15,86 @@
             "name": "新建位图资源",
             "identifier": "new_bitmap_asset",
             "handler": "newBitmapAsset",
-            "script": "new/new_asset.cocoascript"
+            "script": "new/new_asset.js"
         },
         {
             "name": "新建矢量资源",
             "identifier": "new_vector_asset",
             "handler": "newVectorAsset",
-            "script": "new/new_asset.cocoascript"
+            "script": "new/new_asset.js"
         },
         {
             "name": "新建点九资源",
             "identifier": "new_nine_patch_asset",
-            "script": "new/new_nine_patch_asset.cocoascript"
+            "script": "new/new_nine_patch_asset.js"
         },
         {
             "name": "新建应用图标",
             "identifier": "new_app_icon",
-            "script": "new/new_app_icon.cocoascript"
+            "script": "new/new_app_icon.js"
         },
         {
             "name": "点九图片预览",
             "identifier": "nine_patch_preview",
-            "script": "preview/nine_patch_preview.cocoascript"
+            "script": "preview/nine_patch_preview.js"
         },
         {
             "name": "图层色彩代码",
             "identifier": "view_color_code_from_selected_layer",
-            "script": "preview/view_color_code.cocoascript"
+            "script": "preview/view_color_code.js"
         },
         {
             "name": "查看形状代码",
             "identifier": "view_shape_code",
-            "script": "preview/view_shape_code.cocoascript"
+            "script": "preview/view_shape_code.js"
         },
         {
             "name": "导出位图资源 (PNG)",
             "identifier": "export_bitmap_assets_png",
-            "script": "export/export_bitmap_assets.cocoascript"
+            "script": "export/export_bitmap_assets.js"
         },
         {
             "name": "导出位图资源 (WebP)",
             "identifier": "export_bitmap_assets_webp",
-            "script": "export/export_bitmap_assets.cocoascript"
+            "script": "export/export_bitmap_assets.js"
         },
         {
             "name": "导出矢量资源",
             "identifier": "export_vector_assets",
-            "script": "export/export_vector_drawable.cocoascript"
+            "script": "export/export_vector_drawable.js"
         },
         {
             "name": "导出点九资源",
             "identifier": "export_nine_patch",
-            "script": "export/export_nine_patch.cocoascript"
+            "script": "export/export_nine_patch.js"
         },
         {
             "name": "导出应用图标",
             "identifier": "export_app_icon",
-            "script": "export/export_app_icon.cocoascript"
+            "script": "export/export_app_icon.js"
         },
         {
             "name": "参数设置",
             "identifier": "preferences",
-            "script": "utilities/preferences.cocoascript"
+            "script": "utilities/preferences.js"
         },
         {
             "name": "网站",
             "identifier": "web_site",
             "handler": "website",
-            "script": "utilities/utilities.cocoascript"
+            "script": "utilities/utilities.js"
         },
         {
             "name": "问题反馈",
             "identifier": "report_issues",
             "handler": "reportIssues",
-            "script": "utilities/utilities.cocoascript"
+            "script": "utilities/utilities.js"
         },
         {
             "name": "捐款",
             "identifier": "donate",
             "handler": "donate",
-            "script": "utilities/utilities.cocoascript"
+            "script": "utilities/utilities.js"
         },
         {
             "handlers": {
@@ -102,7 +102,7 @@
                     "OpenDocument": "changeLanguage"
                 }
             },
-            "script": "utilities/change_language.cocoascript"
+            "script": "utilities/change_language.js"
         }
     ],
     "menu": {

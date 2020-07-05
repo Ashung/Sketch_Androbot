@@ -1,4 +1,4 @@
-@import "../lib/common.js";
+var ga = require("../lib/google_analytics");
 
 var website = function(context) {
     ga(context, "Web", "website");
@@ -10,7 +10,7 @@ var reportIssues = function(context) {
     NSWorkspace.sharedWorkspace().openURL(context.plugin.homepageURL().URLByAppendingPathComponent("issues"));
 };
 
-var donate = function() {
+var donate = function(context) {
     ga(context, "Web", "donate");
     NSWorkspace.sharedWorkspace().openURL(NSURL.URLWithString("https://ashung.github.io/donate.html?ref=android_res_export"));
 };

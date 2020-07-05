@@ -1,4 +1,17 @@
-@import "../lib/common.js";
+var ga = require("../lib/google_analytics");
+var message = require("../lib/message");
+var localizedString = require("../lib/localizedString");
+var preferences = require("../lib/preferences");
+var common = require("../lib/common");
+var layer = require("../lib/layer");
+
+var toast = message.toast;
+var getPreferences = preferences.getPreferences;
+var assetName = common.assetName;
+var getLayerWithNameFromParent = layer.getLayerWithNameFromParent;
+var groupFromLayers = layer.groupFromLayers;
+var addSliceInToGroup = layer.addSliceInToGroup;
+var addRectShape = layer.addRectShape;
 
 var onRun = function(context) {
 
@@ -21,7 +34,7 @@ var onRun = function(context) {
 
     var assetNameType = getPreferences(context, "asset_name_type");
 
-    var groupNinePatchs = [];
+    var groupNinePatches = [];
     var loopSelection = selection.objectEnumerator();
     var layer;
     while (layer = loopSelection.nextObject()) {
@@ -32,7 +45,7 @@ var onRun = function(context) {
         var name = assetName(layer, assetNameType);
 
         if (layer.class() == "MSLayerGroup") {
-            // No cotent and patch group
+            // No content and patch group
             if (getLayerWithNameFromParent("content", layer)) {
                 groupNinePatch = layer;
                 groupContent = getLayerWithNameFromParent("content", layer);
@@ -84,9 +97,9 @@ var onRun = function(context) {
         }
         groupNinePatch.setLayerListExpandedType(2);
 
-        groupNinePatchs.push(groupNinePatch);
+        groupNinePatches.push(groupNinePatch);
 
     }
 
-    doc.currentPage().changeSelectionBySelectingLayers(groupNinePatchs);
+    doc.currentPage().changeSelectionBySelectingLayers(groupNinePatches);
 }
