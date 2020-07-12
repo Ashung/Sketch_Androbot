@@ -1,13 +1,20 @@
-@import "../lib/MochaJSDelegate.js";
-@import "../lib/common.js";
+var ga = require("../lib/google_analytics");
+var message = require("../lib/message");
+var localizedString = require("../lib/localizedString");
+var layer = require("../lib/layer");
+var window = require("../lib/window");
+var preferences = require("../lib/preferences");
+
+var toast = message.toast;
+var getLayerWithNameFromParent = layer.getLayerWithNameFromParent;
+var showHtmlWindow = window.showHtmlWindow;
+var getPreferences = preferences.getPreferences;
 
 var onRun = function(context) {
 
     ga(context, "Preview", "nine_patch_preview");
 
-    var doc = context.document;
     var selection = context.selection;
-
     if (selection.count() == 0 || selection.count() > 1) {
         toast(context, localizedString(context, "select_one_nine_patch_asset"));
         return;
@@ -82,7 +89,7 @@ var onRun = function(context) {
     var ninePatchHeight = (ninePatch.frame().height() - 2) * scale;
 
     // Dialog
-    window(
+    showHtmlWindow(
         context,
         localizedString(context, "nine_patch_preview"),
         "nine_patch_preview.html",

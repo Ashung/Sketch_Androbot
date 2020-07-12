@@ -26,6 +26,7 @@
     "export": "Export",
     "save": "Save",
     "copy": "Copy",
+    "copied": "Copied.",
     "can_not_create_nine_patch_from_artboard_or_symbol_master": "Can't create Nine-Patch from Artboard or Symbol Master.",
     "no_nine_patch_asset": "No any nine-patch asset.",
     "s2v_version_title": "You need to update svg2vectordrawable to %1.",

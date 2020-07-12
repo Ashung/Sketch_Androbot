@@ -1,13 +1,27 @@
-@import "../lib/MochaJSDelegate.js";
-@import "../lib/common.js";
+var ga = require("../lib/google_analytics");
+var message = require("../lib/message");
+var localizedString = require("../lib/localizedString");
+var preferences = require("../lib/preferences");
+var common = require("../lib/common");
+var window = require("../lib/window");
+var io = require("../lib/io");
+
+var toast = message.toast;
+var getPreferences = preferences.getPreferences;
+var assetName = common.assetName;
+var colorToAndroid = common.colorToAndroid;
+var showCodeWindow = window.showCodeWindow;
+var chooseFolder = io.chooseFolder;
+var directoryIsWriteable = io.directoryIsWriteable;
+var mkdir = io.mkdir;
+var writeContentToFile = io.writeContentToFile;
+var showInFinder = io.showInFinder;
 
 var onRun = function(context) {
 
     ga(context, "Preview", "view_color_code");
 
-    var doc = context.document;
     var selection = context.selection;
-
     if (selection.count() == 0) {
         toast(context, localizedString(context, "no_selected_shape_layer"));
         return;

@@ -26,6 +26,7 @@
     "export": "导出",
     "save": "保存",
     "copy": "复制",
+    "copied": "已复制。",
     "can_not_create_nine_patch_from_artboard_or_symbol_master": "不可从画板或组件模版创建点九资源。",
     "no_nine_patch_asset": "无任何点九资源。",
     "s2v_version_title": "您需要更新 svg2vectordrawable 至 %1。",

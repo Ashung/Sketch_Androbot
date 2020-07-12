@@ -1,31 +1,22 @@
-@import "../lib/common.js";
+var ga = require("../lib/google_analytics");
+var message = require("../lib/message");
+var localizedString = require("../lib/localizedString");
+var io = require("../lib/io");
+var preferences = require("../lib/preferences");
+var common = require("../lib/common");
+var svg2vector = require("../lib/main");
+
+var toast = message.toast;
+var chooseFolder = io.chooseFolder;
+var directoryIsWriteable = io.directoryIsWriteable;
+var getPreferences = preferences.getPreferences;
+var VECTORDRAWABLE_FOLDERS = common.VECTORDRAWABLE_FOLDERS;
+var assetName = common.assetName;
+var showInFinder = io.showInFinder;
 
 var onRun = function(context) {
 
     ga(context, "Export", "export_vector_drawable");
-
-    // SVG2VectorDrawable
-    var s2v = which("s2v");
-    if (!s2v) {
-        alert(
-            context,
-            localizedString(context, "install_s2v_title"),
-            localizedString(context, "install_s2v_message")
-        );
-        return;
-    }
-
-    // Check SVG2VectorDrawable version
-    var s2vVersion = checkVersion(s2v);
-    var requireVersion = "2.6.22";
-    if (versionCompare(s2vVersion, requireVersion) == -1) {
-        alert(
-            context,
-            localizedString(context, "s2v_version_title", "v" + requireVersion),
-            localizedString(context, "s2v_version_message")
-        );
-        return;
-    }
 
     var selection = context.selection;
 
@@ -139,17 +130,32 @@ var onRun = function(context) {
 
             // Export
             var outputPath = exportFolder + "/" + vectorAssetFolder + "/" + assetName(slice, assetNameType) + ".xml";
-            svg2vector(s2v, svgCode, outputPath, floatPrecision, function(message) {
-                toast(context, message);
+            // svg2vector(s2v, svgCode, outputPath, floatPrecision, function(message) {
+            //     toast(context, message);
+            // });
+
+            // log(svgCode);
+
+            // log(svg2vectordrawable)
+
+            svg2vector(svgCode, 2, undefined, undefined, function(xml) {
+                console.log(xml);
             });
+            
+            // .then(function(xmlCode) {
+            //     log(xmlCode);
+            // });
 
         }
 
-        toast(context, localizedString(context, "export_done"));
 
-        if (getPreferences(context, "show_in_finder_after_export") == 1) {
-            showInFinder(exportFolder + "/" + vectorAssetFolder);
-        }
+
+
+        // toast(context, localizedString(context, "export_done"));
+
+        // if (getPreferences(context, "show_in_finder_after_export") == 1) {
+        //     showInFinder(exportFolder + "/" + vectorAssetFolder);
+        // }
 
     }
 }
@@ -192,34 +198,6 @@ function svg2vector(s2v, svgCode, vectorFile, floatPrecision, showErrorMessage) 
             showErrorMessage(msg);
         }
     });
-}
-
-function checkVersion(command) {
-    var result = "";
-    runCommand("/bin/bash", ["-l", "-c", command + " --version"], function(status, msg) {
-        if (status && msg != "") {
-            result += msg;
-            result = result.replace(/\s*$/g, "");
-        }
-    });
-    return result;
-}
-
-function versionCompare(version1, version2) {
-    var v1 = version1.split("."),
-        v2 = version2.split(".");
-    var length = Math.max(v1.length, v2.length);
-    for (var i = 0; i < length; i ++) {
-        var part1 = v1[i] ? parseInt(v1[i]) : 0,
-            part2 = v2[i] ? parseInt(v2[i]) : 0;
-        if (part1 < part2) {
-            return -1;
-        }
-        if (part1 > part2) {
-            return 1;
-        }
-    }
-    return 0;
 }
 
 function styleLayer(layer) {

@@ -27,20 +27,12 @@ cancel: Cancel
 export: Export
 save: Save
 copy: Copy
+copied: Copied.
 
 can_not_create_nine_patch_from_artboard_or_symbol_master: Can't create Nine-Patch from Artboard or Symbol Master.
 
 no_nine_patch_asset: No any nine-patch asset.
 
-s2v_version_title: You need to update svg2vectordrawable to %1.
-s2v_version_message: |-
-    Run follow command in the Terminal.
-    sudo npm install -g svg2vectordrawable
-install_s2v_title: Please check that you have svg2vectordrawable installed.
-install_s2v_message: |-
-    Export Android vector drawable feature depend on Node.js and svg2vectordrawable.
-    After you installed Node.js, run follow command in the Terminal.
-    sudo npm install -g svg2vectordrawable
 no_vector_drawable_asset: No any vector drawable asset.
 
 export_dpis: Export DPIs

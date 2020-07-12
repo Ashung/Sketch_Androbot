@@ -3,9 +3,11 @@ var MochaJSDelegate = require("../lib/MochaJSDelegate");
 var localizedString = require("../lib/localizedString");
 var preferences = require("../lib/preferences");
 var io = require("../lib/io");
+var message = require("../lib/message");
 
 var getPreferences = preferences.getPreferences;
 var pasteboardCopy = io.pasteboardCopy;
+var toast = message.toast;
 
 function window(context, title, htmlPath, didFinishLoadFunction, didChangeLocationFunction) {
 
@@ -94,9 +96,11 @@ function showCodeWindow(context, code, saveAction) {
 
             if (locationHash == "#copy") {
                 pasteboardCopy(code);
+                toast(context, localizedString(context, "copied"));
             }
         }
     );
 }
 
+module.exports.showHtmlWindow = window;
 module.exports.showCodeWindow = showCodeWindow;
