@@ -4,7 +4,7 @@ var localizedString = require("../lib/localizedString");
 var io = require("../lib/io");
 var preferences = require("../lib/preferences");
 var common = require("../lib/common");
-var svg2vector = require("../lib/main");
+var svg2vector = require("../lib/svg-to-vectordrawable");
 
 var toast = message.toast;
 var chooseFolder = io.chooseFolder;
@@ -130,6 +130,22 @@ var onRun = function(context) {
 
             // Export
             var outputPath = exportFolder + "/" + vectorAssetFolder + "/" + assetName(slice, assetNameType) + ".xml";
+            
+            
+            console.log(outputPath)
+
+            var sketch = require('sketch');
+            var fiber = sketch.Async.createFiber()
+            var xml = svg2vector(svgCode, 2);
+            console.log(xml)
+            fiber.cleanup()
+
+
+
+            // .then(function(xml) {
+            //     console.log(xml)
+            // })
+            
             // svg2vector(s2v, svgCode, outputPath, floatPrecision, function(message) {
             //     toast(context, message);
             // });
@@ -138,9 +154,9 @@ var onRun = function(context) {
 
             // log(svg2vectordrawable)
 
-            svg2vector(svgCode, 2, undefined, undefined, function(xml) {
-                console.log(xml);
-            });
+            // svg2vector(svgCode, 2, undefined, undefined, function(xml) {
+            //     console.log(xml);
+            // });
             
             // .then(function(xmlCode) {
             //     log(xmlCode);

@@ -4,6 +4,7 @@ var localizedString = require("../lib/localizedString");
 var common = require("../lib/common");
 var io = require("../lib/io");
 
+var DPIS = common.DPIS;
 var getPreferences = preferences.getPreferences;
 var setPreferences = preferences.setPreferences;
 var removeSystemPreference = preferences.removeSystemPreference;
